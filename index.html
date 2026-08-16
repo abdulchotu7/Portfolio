@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js');</script>
 <title>Abdul Rahim — AI Engineer</title>
 <meta name="description" content="Abdul Rahim — AI Engineer building real-time ML systems, on-device inference, retrieval pipelines, and agentic platforms.">
 <meta property="og:title" content="Abdul Rahim — AI Engineer">
@@ -22,7 +23,7 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;line-height:1.6;transition:background .35s,color .35s}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;line-height:1.6}
 ::selection{background:var(--accent);color:#fff}
 h1,h2,h3{font-family:'Space Grotesk',sans-serif}
 a{color:inherit;text-decoration:none}
@@ -30,7 +31,7 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- backdrop ---------- */
 .bg-grid{position:fixed;inset:0;z-index:-2;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:72px 72px;opacity:.35;mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 30%,transparent 100%)}
-.blob{position:fixed;border-radius:50%;filter:blur(120px);opacity:.14;z-index:-1;background:var(--accent);transition:background .35s}
+.blob{position:fixed;border-radius:50%;filter:blur(120px);opacity:.14;z-index:-1;background:var(--accent)}
 .blob.b1{width:520px;height:520px;top:-180px;left:-140px}
 .blob.b2{width:420px;height:420px;top:24%;right:-160px;opacity:.09}
 
@@ -38,7 +39,7 @@ a{color:inherit;text-decoration:none}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 6vw;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid transparent;transition:.3s}
 nav.scrolled{border-bottom-color:var(--border)}
 .logo{font-family:'Space Grotesk';font-weight:700;font-size:1.05rem}
-.logo em{font-style:normal;color:var(--accent)}
+.accent{color:var(--accent)}
 nav .links{display:flex;gap:30px;font-size:.85rem;color:var(--muted)}
 nav .links a{transition:.2s;position:relative}
 nav .links a:hover{color:var(--text)}
@@ -76,7 +77,7 @@ section{padding:100px 6vw;max-width:1180px;margin:0 auto}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
 .stat{border:1px solid var(--border);background:var(--panel);border-radius:15px;padding:20px 22px;box-shadow:0 1px 2px rgba(20,20,30,.04);transition:.25s}
 .stat:hover{transform:translateY(-3px);border-color:var(--accent-line)}
-.stat b{display:block;font-family:'Space Grotesk';font-size:1.55rem;font-weight:700;color:var(--accent)}
+.stat .num{display:block;font-family:'Space Grotesk';font-size:1.55rem;font-weight:700;color:var(--accent)}
 .stat span{font-size:.76rem;color:var(--muted)}
 
 /* ---------- terminal ---------- */
@@ -108,7 +109,7 @@ section{padding:100px 6vw;max-width:1180px;margin:0 auto}
 .card .link{font-size:.78rem;color:var(--accent);font-weight:600}
 .card .link:hover{color:var(--accent-ink)}
 .experiments{margin-top:36px;border:1px dashed var(--border);border-radius:16px;padding:22px 28px;color:var(--muted);font-size:.88rem;background:var(--bg2)}
-.experiments b{color:var(--text);font-family:'Space Grotesk'}
+.experiments .ttl{color:var(--text);font-family:'Space Grotesk'}
 .experiments .mono{color:var(--accent-ink);font-size:.76rem}
 
 /* ---------- experience ---------- */
@@ -138,15 +139,14 @@ section{padding:100px 6vw;max-width:1180px;margin:0 auto}
 /* ---------- contact ---------- */
 .contact{text-align:center;padding-bottom:130px}
 .contact h2{font-size:clamp(1.9rem,4.6vw,3.1rem);font-weight:700;margin-bottom:16px}
-.contact h2 em{font-style:normal;color:var(--accent)}
 .contact p{color:var(--muted);max-width:540px;margin:0 auto 36px}
 footer{border-top:1px solid var(--border);padding:26px 6vw;display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);flex-wrap:wrap;gap:10px}
 footer .now{display:flex;align-items:center;gap:8px}
 footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent)}
 
 /* ---------- reveal ---------- */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
 
 @media(max-width:900px){
   #projects .grid{grid-template-columns:1fr}
@@ -155,6 +155,15 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
   .stats{grid-template-columns:repeat(2,1fr)}
   section{padding:76px 6vw}
 }
+.sec-tight{padding-top:20px}
+.contact .hero-ctas{justify-content:center}
+@media(prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  .hero .available::before{animation:none}
+  .hero .role .caret{animation:none}
+  .hero h1 .hl svg path{animation:none;stroke-dashoffset:0}
+  .btn,.card,.stat{transition:none}
+}
 </style>
 </head>
 <body>
@@ -162,7 +171,7 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
 <div class="blob b1"></div><div class="blob b2"></div>
 
 <nav id="nav">
-  <div class="logo">abdul<em>.rahim</em></div>
+  <div class="logo">abdul<span class="accent">.rahim</span></div>
   <div class="links">
     <a href="#work">Work</a>
     <a href="#projects">Projects</a>
@@ -178,7 +187,7 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
 <section class="hero">
   <div class="available">Open to opportunities · AI / Backend roles</div>
   <h1>AI systems that run<br><span class="hl">in real time
-    <svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 10 Q 75 2 150 8 T 298 6"/></svg>
+    <svg viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 10 Q 75 2 150 8 T 298 6"/></svg>
   </span> — and agents that ship.</h1>
   <div class="role mono">&gt; <span id="typed"></span><span class="caret">|</span></div>
   <p class="lede">Generative AI Engineer, 1+ year in production. I squeeze the best out of existing models — rebuilt NVIDIA's streaming ASR as a stateful O(n) engine on Apple Silicon, shipped hybrid RAG with rerankers and CI, published an on-device vision tool on npm — and architected agent platforms processing <b>125K+ calls/day</b> on AWS.</p>
@@ -188,10 +197,10 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
     <a class="btn" href="https://www.linkedin.com/in/abdul-rahim-c/" target="_blank" rel="noopener">LinkedIn</a>
   </div>
   <div class="stats">
-    <div class="stat reveal"><b data-count="125" data-suffix="K+">0</b><span>calls/day · AWS voice platform</span></div>
-    <div class="stat reveal"><b data-count="90" data-suffix="%">0</b><span>manual research effort automated</span></div>
-    <div class="stat reveal"><b data-count="10" data-suffix="K+">0</b><span>companies · AI intelligence reports</span></div>
-    <div class="stat reveal"><b data-count="810" data-suffix="ms">0</b><span>streaming ASR first-word latency</span></div>
+    <div class="stat reveal"><span class="num" data-count="125" data-suffix="K+">0</span><span>calls/day · AWS voice platform</span></div>
+    <div class="stat reveal"><span class="num" data-count="90" data-suffix="%">0</span><span>manual research effort automated</span></div>
+    <div class="stat reveal"><span class="num" data-count="10" data-suffix="K+">0</span><span>companies · AI intelligence reports</span></div>
+    <div class="stat reveal"><span class="num" data-count="810" data-suffix="ms">0</span><span>streaming ASR first-word latency</span></div>
   </div>
 
   <div class="term reveal">
@@ -272,7 +281,7 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
     </div>
   </div>
   <div class="experiments reveal">
-    <b>Also explored:</b> self-hosting Qwen3.8-27B (FP8) on a spot GPU with vLLM · voice cloning with dots-tts (INT4) · WhatsApp Cloud API bots.
+    <span class="ttl">Also explored:</span> self-hosting Qwen3.8-27B (FP8) on a spot GPU with vLLM · voice cloning with dots-tts (INT4) · WhatsApp Cloud API bots.
   </div>
 </section>
 
@@ -290,7 +299,7 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
 </section>
 
 <!-- ================= BACKGROUND ================= -->
-<section style="padding-top:20px">
+<section class="sec-tight">
   <div class="reveal">
     <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Background</h2></div>
     <div class="facts">
@@ -303,10 +312,10 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
 <!-- ================= CONTACT ================= -->
 <section id="contact" class="contact">
   <div class="reveal">
-    <span class="tag" style="margin:0 auto 20px">Contact</span>
-    <h2>Let's build something<br><em>real-time.</em></h2>
+    <span class="tag">Contact</span>
+    <h2>Let's build something<br><span class="accent">real-time.</span></h2>
     <p>Open to AI engineering and backend roles, or freelance agent builds. If it involves speech, retrieval, serving, or agents — my inbox is open.</p>
-    <div class="hero-ctas" style="justify-content:center">
+    <div class="hero-ctas">
       <a class="btn primary" href="mailto:abdulrahimchotu7771@gmail.com">abdulrahimchotu7771@gmail.com</a>
       <a class="btn" href="https://www.linkedin.com/in/abdul-rahim-c/" target="_blank" rel="noopener">LinkedIn →</a>
       <a class="btn" href="https://github.com/abdulchotu7" target="_blank" rel="noopener">GitHub →</a>
@@ -327,15 +336,19 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 // ---------- typing effect ----------
 const roles = ["streaming ASR on Apple Silicon","on-device MLX inference","hybrid RAG pipelines","multi-agent orchestration","production LLM systems"];
 const typed = document.getElementById('typed');
-let ri=0, ci=0, deleting=false;
-(function type(){
-  const word = roles[ri];
-  typed.textContent = word.slice(0, ci);
-  if(!deleting && ci < word.length){ ci++; setTimeout(type, 60); }
-  else if(!deleting){ deleting=true; setTimeout(type, 1700); }
-  else if(ci > 0){ ci--; setTimeout(type, 28); }
-  else { deleting=false; ri=(ri+1)%roles.length; setTimeout(type, 350); }
-})();
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  typed.textContent = roles[0];
+} else {
+  let ri=0, ci=0, deleting=false;
+  (function type(){
+    const word = roles[ri];
+    typed.textContent = word.slice(0, ci);
+    if(!deleting && ci < word.length){ ci++; setTimeout(type, 60); }
+    else if(!deleting){ deleting=true; setTimeout(type, 1700); }
+    else if(ci > 0){ ci--; setTimeout(type, 28); }
+    else { deleting=false; ri=(ri+1)%roles.length; setTimeout(type, 350); }
+  })();
+}
 
 // ---------- scroll reveal ----------
 const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }}), {threshold:.12});
