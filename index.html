@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="signal">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,26 +13,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ============ THEMES (color only — layout never changes) ============ */
-:root, [data-theme="signal"]{
+/* ============ COLOR ============ */
+:root{
   --bg:#fdfdfc; --bg2:#f7f6f3; --panel:#ffffff; --border:#e6e4df;
   --text:#1b1a1e; --muted:#6d6b75; --faint:#a3a1aa;
   --accent:#e11d2e; --accent-ink:#c1121f; --accent-soft:#fdecec; --accent-line:rgba(225,29,46,.25);
-}
-[data-theme="amber"]{
-  --bg:#fffdf6; --bg2:#faf5e9; --panel:#ffffff; --border:#e9e2d0;
-  --text:#211b10; --muted:#71695a; --faint:#a89e8a;
-  --accent:#d97706; --accent-ink:#b45309; --accent-soft:#fdf3dd; --accent-line:rgba(217,119,6,.28);
-}
-[data-theme="azure"]{
-  --bg:#fcfdff; --bg2:#f3f6fc; --panel:#ffffff; --border:#dfe5ef;
-  --text:#101828; --muted:#5d6b84; --faint:#97a3b8;
-  --accent:#2563eb; --accent-ink:#1d4ed8; --accent-soft:#eaf1fe; --accent-line:rgba(37,99,235,.25);
-}
-[data-theme="moss"]{
-  --bg:#fbfdfc; --bg2:#f1f7f4; --panel:#ffffff; --border:#dfe9e4;
-  --text:#13201b; --muted:#5c6f67; --faint:#9aada4;
-  --accent:#0d9488; --accent-ink:#0f766e; --accent-soft:#e4f4f0; --accent-line:rgba(13,148,136,.25);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -64,9 +49,6 @@ nav .links a:hover::after{width:100%}
 .btn:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 6px 20px -8px var(--accent-line)}
 .btn.primary{background:var(--accent);border:1px solid var(--accent);color:#fff}
 .btn.primary:hover{background:var(--accent-ink);box-shadow:0 10px 26px -8px var(--accent-line)}
-#themeBtn{padding:10px 14px;gap:8px}
-#themeBtn .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);transition:.35s}
-#themeBtn .tname{font-size:.78rem;font-family:'JetBrains Mono';color:var(--muted);min-width:52px;text-align:left}
 
 /* ---------- layout ---------- */
 section{padding:100px 6vw;max-width:1180px;margin:0 auto}
@@ -114,7 +96,7 @@ section{padding:100px 6vw;max-width:1180px;margin:0 auto}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
 .card{position:relative;border:1px solid var(--border);background:var(--panel);border-radius:18px;padding:28px;box-shadow:0 1px 2px rgba(20,20,30,.04);transition:.28s;overflow:hidden;display:flex;flex-direction:column}
 .card:hover{transform:translateY(-5px);border-color:var(--accent-line);box-shadow:0 18px 40px -18px var(--accent-line)}
-.card.featured{grid-column:span 2}
+#projects .grid{grid-template-columns:repeat(2,1fr)}
 .card .num{position:absolute;top:24px;right:26px;font-family:'JetBrains Mono';font-size:.72rem;color:var(--faint)}
 .card h3{font-size:1.14rem;margin-bottom:6px}
 .card .stack{font-size:.72rem;color:var(--accent-ink);font-family:'JetBrains Mono';margin-bottom:13px}
@@ -147,6 +129,12 @@ section{padding:100px 6vw;max-width:1180px;margin:0 auto}
 .sgroup .card{padding:24px}
 .sgroup h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent-ink);margin-bottom:15px}
 
+/* ---------- background facts ---------- */
+.facts{border-top:1px solid var(--border);margin-top:8px}
+.facts>div{display:flex;gap:28px;align-items:baseline;padding:22px 4px;border-bottom:1px solid var(--border)}
+.facts b{font-family:'JetBrains Mono';font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);min-width:130px;flex-shrink:0}
+.facts p{color:var(--muted);font-size:.93rem}
+
 /* ---------- contact ---------- */
 .contact{text-align:center;padding-bottom:130px}
 .contact h2{font-size:clamp(1.9rem,4.6vw,3.1rem);font-weight:700;margin-bottom:16px}
@@ -161,7 +149,8 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
 .reveal.in{opacity:1;transform:none}
 
 @media(max-width:900px){
-  .card.featured{grid-column:span 1}
+  #projects .grid{grid-template-columns:1fr}
+  .facts>div{flex-direction:column;gap:6px}
   nav .links{display:none}
   .stats{grid-template-columns:repeat(2,1fr)}
   section{padding:76px 6vw}
@@ -181,7 +170,6 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-right">
-    <button class="btn" id="themeBtn" title="Change color theme"><span class="dot"></span><span class="tname">signal</span></button>
     <a class="btn primary" href="resume.pdf" target="_blank">Résumé</a>
   </div>
 </nav>
@@ -193,7 +181,7 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
     <svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 10 Q 75 2 150 8 T 298 6"/></svg>
   </span> — and agents that ship.</h1>
   <div class="role mono">&gt; <span id="typed"></span><span class="caret">|</span></div>
-  <p class="lede">AI Engineer, 1+ year in production. I rebuilt NVIDIA's streaming ASR as a stateful O(n) engine on Apple Silicon, shipped hybrid RAG with rerankers and CI, self-hosted a 27B model for under $100 — and architected agent platforms processing <b>125K+ calls/day</b> on AWS.</p>
+  <p class="lede">Generative AI Engineer, 1+ year in production. I squeeze the best out of existing models — rebuilt NVIDIA's streaming ASR as a stateful O(n) engine on Apple Silicon, shipped hybrid RAG with rerankers and CI, published an on-device vision tool on npm — and architected agent platforms processing <b>125K+ calls/day</b> on AWS.</p>
   <div class="hero-ctas">
     <a class="btn primary" href="#projects">View my work ↓</a>
     <a class="btn" href="https://github.com/abdulchotu7" target="_blank" rel="noopener">GitHub</a>
@@ -201,7 +189,7 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
   </div>
   <div class="stats">
     <div class="stat reveal"><b data-count="125" data-suffix="K+">0</b><span>calls/day · AWS voice platform</span></div>
-    <div class="stat reveal"><b data-count="4100" data-suffix="">0</b><span>tok/s · self-hosted prefill</span></div>
+    <div class="stat reveal"><b data-count="90" data-suffix="%">0</b><span>manual research effort automated</span></div>
     <div class="stat reveal"><b data-count="10" data-suffix="K+">0</b><span>companies · AI intelligence reports</span></div>
     <div class="stat reveal"><b data-count="810" data-suffix="ms">0</b><span>streaming ASR first-word latency</span></div>
   </div>
@@ -234,6 +222,7 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
       <ul>
         <li>Architected an event-driven voice platform on Lambda, SQS, DynamoDB, and EventBridge sustaining 180–190 concurrent calls.</li>
         <li>Designed queue-based throttling and lifecycle orchestration; automated post-call sentiment analysis, cutting 5+ hours of manual reporting weekly.</li>
+        <li>Led the architecture end to end — defining queue topology, concurrency control, and distributed call orchestration across AWS services.</li>
       </ul>
     </div>
   </div>
@@ -245,7 +234,7 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
   <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Things I've built</h2></div>
   <p class="sec-sub">Real-time engines, retrieval pipelines, serving infra, and agents — each solving a real problem end to end, with numbers to back it.</p></div>
   <div class="grid">
-    <div class="card featured reveal">
+    <div class="card reveal">
       <span class="num">01</span>
       <h3>Nemotron Streaming ASR</h3>
       <div class="stack">MLX · FastConformer-RNNT · Apple Silicon · pyobjc</div>
@@ -274,15 +263,6 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
     </div>
     <div class="card reveal">
       <span class="num">04</span>
-      <h3>Qwen 27B, Self-Hosted</h3>
-      <div class="stack">vLLM · FP8 · EC2 L40S · Docker</div>
-      <p>Stood up Qwen3.8-27B (FP8, hybrid Mamba/attention, 262K context) on a spot GPU instance with vLLM as an OpenAI-compatible endpoint — then wrote the post-mortem: five real traps, from Mamba cache crashes to KV-cache tuning.</p>
-      <div class="proof"><span>4,100 tok/s prefill</span><span>262K context verified</span><span>$100 total budget</span></div>
-      <div class="chips"><span class="chip">FP8 weights + KV cache</span><span class="chip">spot GPU cost eng</span><span class="chip">measured TTFT 0.7 s</span></div>
-      <a class="link" href="https://github.com/abdulchotu7/qwen-aws-serving" target="_blank" rel="noopener">View on GitHub →</a>
-    </div>
-    <div class="card reveal">
-      <span class="num">05</span>
       <h3>pi-mlx-vision</h3>
       <div class="stack">MLX · LFM2.5-VL-3B · npm · TypeScript</div>
       <p>Gives text-only coding agents local vision: a describe_image tool backed by a quantized 3B VL model, with a persistent stdio server that keeps the model resident. Published as an installable npm package.</p>
@@ -292,7 +272,7 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
     </div>
   </div>
   <div class="experiments reveal">
-    <b>Also explored:</b> voice cloning with dots-tts (INT4, RTF-measured) · WhatsApp Cloud API bots (webhooks, Graph API) · zero-shot visual grounding with LocateAnything-3B · classical ML from scratch in NumPy.
+    <b>Also explored:</b> self-hosting Qwen3.8-27B (FP8) on a spot GPU with vLLM · voice cloning with dots-tts (INT4) · WhatsApp Cloud API bots.
   </div>
 </section>
 
@@ -301,30 +281,21 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
   <div class="reveal"><span class="tag">Skills</span>
   <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Tools of the trade</h2></div></div>
   <div class="skill-groups">
-    <div class="sgroup"><div class="card reveal"><h3>AI & Agents</h3><div class="chips"><span class="chip">OpenAI Agents SDK</span><span class="chip">MCP</span><span class="chip">LangGraph</span><span class="chip">LangChain</span><span class="chip">GPT-4o / 4.1</span><span class="chip">Structured outputs</span><span class="chip">Tool calling</span></div></div></div>
-    <div class="sgroup"><div class="card reveal"><h3>Retrieval</h3><div class="chips"><span class="chip">LlamaIndex</span><span class="chip">Qdrant</span><span class="chip">BM25 + RRF fusion</span><span class="chip">Cross-encoder rerankers</span><span class="chip">BGE embeddings</span><span class="chip">ChromaDB</span></div></div></div>
-    <div class="sgroup"><div class="card reveal"><h3>Local ML & Speech</h3><div class="chips"><span class="chip">MLX</span><span class="chip">PyTorch / MPS</span><span class="chip">vLLM</span><span class="chip">Quantization (8b/INT4/FP8)</span><span class="chip">RNN-T ASR</span><span class="chip">Silero VAD</span><span class="chip">llama.cpp</span></div></div></div>
-    <div class="sgroup"><div class="card reveal"><h3>Backend & Cloud</h3><div class="chips"><span class="chip">FastAPI</span><span class="chip">Node.js / TypeScript</span><span class="chip">AWS · Lambda, SQS, DynamoDB, S3, EventBridge</span><span class="chip">Docker</span><span class="chip">PostgreSQL / Redis / MongoDB</span><span class="chip">GitHub Actions CI/CD</span><span class="chip">pytest</span></div></div></div>
+    <div class="sgroup"><div class="card reveal"><h3>Generative AI & LLMs</h3><div class="chips"><span class="chip">Prompt & context engineering</span><span class="chip">Structured outputs (Pydantic · Zod)</span><span class="chip">Tool / function calling</span><span class="chip">OpenAI-compatible APIs</span><span class="chip">DeepSeek</span><span class="chip">Evals & regression tests</span><span class="chip">SSE streaming</span></div></div></div>
+    <div class="sgroup"><div class="card reveal"><h3>Agents & Orchestration</h3><div class="chips"><span class="chip">OpenAI Agents SDK</span><span class="chip">LangGraph</span><span class="chip">LangChain</span><span class="chip">MCP servers</span><span class="chip">Playwright MCP + CDP</span><span class="chip">ReAct patterns</span><span class="chip">Multi-stage pipelines</span><span class="chip">Browser automation</span></div></div></div>
+    <div class="sgroup"><div class="card reveal"><h3>Retrieval & RAG</h3><div class="chips"><span class="chip">LlamaIndex</span><span class="chip">Qdrant</span><span class="chip">ChromaDB</span><span class="chip">Hybrid search (BM25 + RRF)</span><span class="chip">Cross-encoder rerankers</span><span class="chip">BGE embeddings</span><span class="chip">Ingestion pipelines</span></div></div></div>
+    <div class="sgroup"><div class="card reveal"><h3>Inference & Serving</h3><div class="chips"><span class="chip">vLLM</span><span class="chip">MLX on-device</span><span class="chip">Quantization (8-bit · INT4 · FP8)</span><span class="chip">Latency benchmarking</span><span class="chip">TTFT · RTF · tok/s tuning</span></div></div></div>
+    <div class="sgroup"><div class="card reveal"><h3>Backend & Cloud</h3><div class="chips"><span class="chip">FastAPI</span><span class="chip">Node.js / TypeScript</span><span class="chip">AWS · Lambda, SQS, DynamoDB, S3, EventBridge</span><span class="chip">Docker</span><span class="chip">PostgreSQL · Redis · MongoDB</span><span class="chip">GitHub Actions CI/CD</span><span class="chip">pytest</span></div></div></div>
   </div>
 </section>
 
-<!-- ================= ABOUT STRIP ================= -->
-<section style="padding-top:0">
-  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
-    <div class="card reveal">
-      <h3>🎓 Education</h3>
-      <div class="stack">2021 — 2025</div>
-      <p>B.Tech in Computer Science, minor in AI/ML — SRM University, Guntur. CGPA 8.86/10.</p>
-    </div>
-    <div class="card reveal">
-      <h3>🏆 Achievements</h3>
-      <div class="stack">competitive programming</div>
-      <p>2nd place — CodeClash at SRM University · 3★ CodeChef · 700+ problems solved across LeetCode, CodeChef & GeeksForGeeks.</p>
-    </div>
-    <div class="card reveal">
-      <h3>⚙️ How I work</h3>
-      <div class="stack">philosophy</div>
-      <p>Simple over abstract. Ship, measure, iterate. Agents plan; systems enforce the guarantees — equivalence tests over vibes.</p>
+<!-- ================= BACKGROUND ================= -->
+<section style="padding-top:20px">
+  <div class="reveal">
+    <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Background</h2></div>
+    <div class="facts">
+      <div><b>Education</b><p>B.Tech in Computer Science, minor in AI/ML — SRM University, Guntur · 2021–2025 · CGPA 8.86/10</p></div>
+      <div><b>Achievements</b><p>2nd place, CodeClash (SRM University) · 3★ CodeChef · 700+ algorithmic problems solved across LeetCode, CodeChef & GeeksForGeeks</p></div>
     </div>
   </div>
 </section>
@@ -353,23 +324,8 @@ footer .now::before{content:'';width:7px;height:7px;border-radius:50%;background
 // ---------- year ----------
 document.getElementById('yr').textContent = new Date().getFullYear();
 
-// ---------- theme toggle (color only) ----------
-const THEMES = ['signal','amber','azure','moss'];
-const saved = localStorage.getItem('theme');
-if (saved && THEMES.includes(saved)) document.documentElement.dataset.theme = saved;
-const themeBtn = document.getElementById('themeBtn');
-function paintThemeName(){ themeBtn.querySelector('.tname').textContent = document.documentElement.dataset.theme; }
-paintThemeName();
-themeBtn.addEventListener('click', () => {
-  const next = THEMES[(THEMES.indexOf(document.documentElement.dataset.theme) + 1) % THEMES.length];
-  document.documentElement.dataset.theme = next;
-  localStorage.setItem('theme', next);
-  document.querySelector('meta[name=theme-color]').setAttribute('content', getComputedStyle(document.body).backgroundColor);
-  paintThemeName();
-});
-
 // ---------- typing effect ----------
-const roles = ["streaming ASR on Apple Silicon","on-device MLX inference","hybrid RAG pipelines","self-hosted LLM serving","agentic workflow automation"];
+const roles = ["streaming ASR on Apple Silicon","on-device MLX inference","hybrid RAG pipelines","multi-agent orchestration","production LLM systems"];
 const typed = document.getElementById('typed');
 let ri=0, ci=0, deleting=false;
 (function type(){
@@ -396,8 +352,11 @@ const co = new IntersectionObserver(es => es.forEach(e => {
 document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
 
 // ---------- interactive terminal ----------
+const term = document.querySelector('.term');
 const termBody = document.getElementById('termBody');
 const termInput = document.getElementById('termInput');
+// click anywhere in the terminal focuses the input
+term.addEventListener('click', () => termInput.focus());
 function print(text, cls){
   const d = document.createElement('div');
   d.className = 'out'; d.style.color = cls || '';
@@ -406,18 +365,24 @@ function print(text, cls){
   termBody.scrollTop = termBody.scrollHeight;
 }
 const CMDS = {
-  help: () => print('commands: whoami · projects · skills · contact · theme · clear'),
-  whoami: () => print("Abdul Rahim — AI Engineer. I build real-time ML systems,\non-device inference, retrieval pipelines, and agents that ship.\n1+ yr production · Consultadd · Pune, India"),
-  projects: () => print("01 nemotron-streaming-asr ... stateful O(n) ASR engine on MLX\n02 pdf-rag-api ............. hybrid retrieval + rerankers + CI\n03 applypilot-ai ........... autonomous ATS agent (200+ submissions)\n04 qwen-27b-selfhosted ...... vLLM on spot GPU, 4.1K tok/s prefill\n05 pi-mlx-vision ........... on-device VLM tool, on npm"),
-  skills: () => print("agents: OpenAI Agents SDK, MCP, LangGraph · retrieval: Qdrant,\nLlamaIndex, BM25+RRF, rerankers · local ML: MLX, vLLM, quantization,\nRNN-T · cloud: AWS, FastAPI, Docker, CI/CD"),
-  contact: () => print("email  → abdulrahimchotu7771@gmail.com\ngithub → github.com/abdulchotu7\nlinkedin → /in/abdul-rahim-c"),
-  theme: () => { themeBtn.click(); print('theme → ' + document.documentElement.dataset.theme, '#7ee2b8'); },
+  help: () => print('commands: whoami · projects · skills · contact · clear'),
+  whoami: () => print("Abdul Rahim — Generative AI Engineer. I put existing models\nto their best use: agents, retrieval, real-time & on-device.\n1+ yr production · Consultadd · Pune, India"),
+  projects: () => print("01 nemotron-streaming-asr ... stateful O(n) ASR engine on MLX\n02 pdf-rag-api ............. hybrid retrieval + rerankers + CI\n03 applypilot-ai ........... autonomous ATS agent (200+ submissions)\n04 pi-mlx-vision ........... on-device VLM tool, on npm"),
+  skills: () => print("gen-ai: prompting, structured outputs, tool calling, evals\nagents: OpenAI Agents SDK, LangGraph, MCP\nretrieval: Qdrant, LlamaIndex, BM25+RRF, rerankers\nserving: MLX, vLLM, quantization · cloud: AWS, FastAPI, CI/CD"),
+  contact: () => print("email  → abdulrahimchotu7771@gmail.com\ngithub → github.com/abdulchotu7\nlinkedin → linkedin.com/in/abdul-rahim-c"),
   clear: () => termBody.querySelectorAll('.out').forEach(d => d.remove()),
 };
 print(" welcome — i'm abdul. type 'help' to look around.", '#8b8b98');
+// command history (↑ / ↓)
+const hist = []; let hi = -1;
 termInput.addEventListener('keydown', e => {
+  if(e.key === 'ArrowUp'){ e.preventDefault(); if(!hist.length) return; hi = hi < 0 ? hist.length - 1 : Math.max(0, hi - 1); termInput.value = hist[hi]; return; }
+  if(e.key === 'ArrowDown'){ e.preventDefault(); if(hi < 0) return; hi++; if(hi >= hist.length){ hi = -1; termInput.value = ''; } else termInput.value = hist[hi]; return; }
   if(e.key !== 'Enter') return;
-  const raw = termInput.value.trim(); termInput.value = '';
+  const raw = termInput.value.trim();
+  termInput.value = '';
+  if(!raw) return;               // ignore empty submits
+  hist.push(raw); hi = -1;
   print('➜ ~ ' + raw, '#d6d6e0');
   const fn = CMDS[raw.toLowerCase()];
   fn ? fn() : print(`command not found: ${raw} — try 'help'`, '#ff8b8b');
