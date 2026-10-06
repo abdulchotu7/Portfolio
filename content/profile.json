@@ -1,0 +1,132 @@
+{
+  "name": "Abdul Rahim",
+  "email": "abdulrahimchotu7771@gmail.com",
+  "phone": "+91 6301999626",
+  "location": "Pune, India",
+  "github": "https://github.com/abdulchotu7",
+  "linkedin": "https://www.linkedin.com/in/abdul-rahim-c/",
+  "education": {"school": "SRM University, Guntur", "degree": "B.Tech in Computer Science", "detail": "Minor in AI/ML | CGPA: 8.86/10", "dates": "2021 - 2025"},
+  "experience": {
+    "company": "Consultadd",
+    "title": "Software Engineer",
+    "location": "Pune",
+    "dates": "March 2025 - March 2026",
+    "ai": [
+      "Developed BizInsights, a seven-stage company research workflow covering market analysis, competitors, SWOT, gaps, solutions, and value propositions.",
+      "Combined web crawling, iterative URL discovery, and LLM-based structured extraction; used Pydantic schemas to validate the outputs of each analysis stage.",
+      "Built FastAPI endpoints and analysis-status tracking with DynamoDB metadata and S3 result storage; implemented Google OAuth and role-based access.",
+      "Worked on an AWS voice campaign platform using Lambda, SQS, DynamoDB, and EventBridge for call orchestration, concurrency control, and post-call reporting."
+    ],
+    "swe": [
+      "Worked on an event-driven voice campaign platform using AWS Lambda, SQS, DynamoDB, and EventBridge, including queue-based throttling and call lifecycle coordination.",
+      "Developed FastAPI endpoints for BizInsights, a seven-stage research platform, with analysis-status tracking, DynamoDB metadata, and S3 result storage.",
+      "Implemented Google OAuth, JWT authentication, and role-based access for user and administrator workflows.",
+      "Used Pydantic validation and background processing to connect web research, data enrichment, and structured report generation."
+    ]
+  },
+  "portfolio_skills": [
+    ["Frontend", "React, TypeScript, HTML, CSS, Tailwind CSS, Zustand"],
+    ["Backend & databases", "Python, FastAPI, Node.js, Express.js, REST APIs, Pydantic, SQL, SQLAlchemy, MongoDB/Mongoose"],
+    ["AI", "Retrieval-Augmented Generation (RAG), vector embeddings, hybrid search, cross-encoder reranking, LlamaIndex, Qdrant, MLX, vLLM, OpenAI Agents SDK, LangGraph, MCP, structured outputs, tool calling"],
+    ["Cloud & delivery", "AWS (EC2, Lambda, SQS, DynamoDB, S3, EventBridge), Docker, Docker Compose, GitHub Actions CI/CD, pytest, Vitest"]
+  ],
+  "focus": {
+    "ai": {
+      "label": "AI engineering",
+      "headline": "AI Engineer | Retrieval, Agents & Local Inference",
+      "summary": "Software engineer with experience at Consultadd and hands-on projects in retrieval, browser agents, and local speech inference. Builds Python and TypeScript applications around existing models, with structured outputs, streaming APIs, and AWS workflows.",
+      "skills": [
+        ["Languages & backend", "Python, TypeScript, JavaScript, FastAPI, REST APIs, Pydantic"],
+        ["AI applications", "OpenAI Agents SDK, LangGraph, MCP, structured outputs, tool calling"],
+        ["Retrieval & inference", "Retrieval-Augmented Generation (RAG), vector embeddings, hybrid search, cross-encoder reranking, LlamaIndex, Qdrant, MLX"],
+        ["Cloud & delivery", "AWS (EC2, Lambda, SQS, DynamoDB, S3, EventBridge), vLLM, Docker, GitHub Actions, pytest"]
+      ],
+      "projects": ["nemotron", "rag", "applypilot"],
+      "web_order": ["nemotron", "rag", "vision", "applypilot"]
+    },
+    "swe": {
+      "label": "Backend / SWE",
+      "headline": "Software Engineer | Backend & AWS",
+      "summary": "Software engineer focused on Python and TypeScript backend applications and AWS workflows. Experience with FastAPI services, asynchronous processing, authentication, structured validation, and automation; projects include retrieval APIs and process-based inference tooling.",
+      "skills": [
+        ["Languages", "Python, TypeScript, JavaScript, SQL"],
+        ["Frontend", "React, HTML, CSS, Tailwind CSS, Zustand"],
+        ["Backend", "FastAPI, Node.js, Express.js, REST APIs, Server-Sent Events, Pydantic, Playwright"],
+        ["Cloud & storage", "AWS Lambda, SQS, DynamoDB, S3, EventBridge, Qdrant, SQLAlchemy, MongoDB/Mongoose"],
+        ["Testing & delivery", "pytest, Vitest, GitHub Actions CI/CD, Docker, Docker Compose"]
+      ],
+      "projects": ["rag", "vision", "applypilot"],
+      "web_order": ["rag", "vision", "applypilot", "nemotron"]
+    }
+  },
+  "projects": {
+    "nemotron": {
+      "name": "Nemotron Streaming ASR",
+      "category": "Speech inference",
+      "stack": "Python, MLX, FastConformer-RNNT",
+      "url": "https://github.com/abdulchotu7/nemotron-streaming-asr",
+      "description": "A stateful streaming speech engine on Apple Silicon. Audio is processed incrementally while attention and convolution caches carry context between chunks.",
+      "pipeline": ["Live audio", "Cached encoder", "Transcript"],
+      "detail": "The implementation retains reference paths and includes tests comparing encoder frames and decoder tokens. A benchmark harness measures processing time and memory; a macOS dictation app connects the engine to microphone input and text insertion.",
+      "ai": [
+        "Implemented a stateful, cache-aware streaming pipeline for NVIDIA's Nemotron ASR model on Apple Silicon, with bounded audio history and incremental encoder/decoder state.",
+        "Added frame/token equivalence tests against the reference implementation, configurable lookahead, a latency benchmark harness, and a macOS dictation app."
+      ],
+      "swe": [
+        "Separated audio buffering, encoder/decoder state, session lifecycle, and dictation integration into independently testable Python modules.",
+        "Implemented bounded audio history, session reset/tail flushing, and reference-equivalence tests for streaming correctness."
+      ]
+    },
+    "rag": {
+      "name": "PDF RAG API",
+      "category": "Retrieval service",
+      "stack": "Python, FastAPI, LlamaIndex, Qdrant, Docker",
+      "url": "https://github.com/abdulchotu7/pdf-rag-api",
+      "description": "A PDF question-answering service that combines semantic and keyword search, reranks retrieved passages, and streams answers with source references.",
+      "pipeline": ["PDF ingestion", "Hybrid retrieval", "Sourced answer"],
+      "detail": "Dense search and BM25 results are merged with reciprocal rank fusion before BGE cross-encoder reranking. The API includes SHA-256 deduplication, asynchronous ingestion, task status, document deletion, and stage latency metrics. CI is configured for unit tests and a Qdrant integration service.",
+      "ai": [
+        "Built hybrid retrieval using dense embeddings, BM25, reciprocal rank fusion, and BGE cross-encoder reranking behind a FastAPI question-answering service.",
+        "Implemented asynchronous PDF ingestion, content-hash deduplication, and SSE answer streaming with source references and stage latency metrics."
+      ],
+      "swe": [
+        "Built FastAPI endpoints for asynchronous PDF ingestion, task status, document management, and SSE answer streaming; added SHA-256 content deduplication.",
+        "Separated API, service, embedding, and storage layers; configured pytest unit tests, Qdrant integration tests in GitHub Actions, and Docker Compose."
+      ]
+    },
+    "vision": {
+      "name": "pi-mlx-vision",
+      "category": "Developer tooling",
+      "stack": "TypeScript, Python, MLX, npm",
+      "url": "https://github.com/abdulchotu7/pi-mlx-vision",
+      "description": "A local vision tool for text-only coding agents. A TypeScript extension asks a resident Python vision model to describe an image or answer a focused question.",
+      "pipeline": ["Agent question", "Local vision model", "Text response"],
+      "detail": "The extension manages a child inference process over JSON-lines stdio, with request IDs, readiness signaling, request timeouts, and exit handling. The model stays loaded between calls and the tool is disabled when the active agent model already supports vision.",
+      "ai": [
+        "Built a describe_image tool for text-only coding agents using a local MLX vision model and a TypeScript extension.",
+        "Kept the model resident in a persistent Python inference server, avoiding repeated model loads; disabled the tool when the active model supports vision."
+      ],
+      "swe": [
+        "Built an npm-packaged TypeScript extension that manages a persistent Python child process over a JSON-lines stdio protocol.",
+        "Implemented request-ID correlation, readiness signaling, request timeouts, and process-exit handling so inference can be reused across tool calls."
+      ]
+    },
+    "applypilot": {
+      "name": "ApplyPilot AI",
+      "category": "Browser automation",
+      "stack": "TypeScript, Python, Playwright, FastAPI, LangGraph, MCP",
+      "url": "https://github.com/abdulchotu7/Agentic-ATS-Automation-Engine",
+      "description": "A job-application workflow connecting resume-based job discovery with browser automation, site-specific handlers, and an agent fallback for unfamiliar forms.",
+      "pipeline": ["Resume profile", "Discovery & browser", "Application workflow"],
+      "detail": "A LangGraph ReAct agent searches for roles. FastAPI background tasks launch a TypeScript router, which uses Playwright handlers for Greenhouse, Lever, SmartRecruiters, and Workday-style forms. An OpenAI Agents SDK agent connects through Playwright MCP for fallback handling; SSE exposes task activity.",
+      "ai": [
+        "Connected a LangGraph ReAct job-discovery agent to Playwright automation for Greenhouse, Lever, SmartRecruiters, and Workday-style application forms.",
+        "Added an OpenAI Agents SDK fallback using Playwright MCP; exposed task activity through a FastAPI SSE monitoring endpoint."
+      ],
+      "swe": [
+        "Connected a Python/FastAPI resume-processing service to a TypeScript Playwright router using background tasks and subprocess execution.",
+        "Implemented site-specific application handlers and SSE task/log updates for monitoring discovery and browser-automation progress."
+      ]
+    }
+  }
+}

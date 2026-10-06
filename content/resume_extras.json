@@ -1,0 +1,60 @@
+{
+  "achievements_confirmed": true,
+  "achievements": [
+    "Solved 700+ algorithmic problems across LeetCode, CodeChef, and GeeksForGeeks.",
+    "Earned a 3-star rating on CodeChef.",
+    "Secured 2nd place in SRM CodeClash."
+  ],
+  "focus": {
+    "ai": {
+      "summary": "Software engineer building AI applications with Python, TypeScript, and AWS. Experience spans structured company research, hybrid retrieval, browser agents, and streaming speech inference on Apple Silicon.",
+      "experience": [
+        "Built BizInsights, a seven-stage research workflow for market analysis, competitors, SWOT, and value propositions.",
+        "Built web crawling and iterative URL discovery, then validated LLM-generated research outputs using Pydantic schemas.",
+        "Built FastAPI endpoints and status tracking with DynamoDB and S3; implemented Google OAuth and role-based access.",
+        "Worked on AWS voice campaign orchestration, concurrency control, and post-call reporting using Lambda, SQS, DynamoDB, and EventBridge."
+      ],
+      "projects": {
+        "nemotron": [
+          "Implemented cache-aware streaming for NVIDIA's Nemotron ASR model on Apple Silicon, preserving encoder/decoder state across audio chunks.",
+          "Added bounded audio history, reference-equivalence tests, a latency benchmark, and a macOS dictation app."
+        ],
+        "rag": [
+          "Combined dense embeddings and BM25 with reciprocal rank fusion and BGE reranking for a FastAPI PDF question-answering service.",
+          "Added asynchronous ingestion, content-hash deduplication, and SSE answer streaming with source references and stage latency metrics."
+        ],
+        "applypilot": [
+          "Connected a LangGraph job-discovery agent to Playwright handlers for Greenhouse, Lever, SmartRecruiters, and Workday-style forms.",
+          "Added an OpenAI Agents SDK fallback through Playwright MCP and SSE task monitoring in FastAPI."
+        ]
+      }
+    },
+    "swe": {
+      "summary": "",
+      "experience": [
+        "Worked on an AWS voice campaign platform with queue-based throttling and call lifecycle coordination using Lambda, SQS, DynamoDB, and EventBridge.",
+        "Built FastAPI endpoints and analysis-status tracking for BizInsights, using DynamoDB metadata and S3 result storage.",
+        "Implemented Google OAuth, JWT authentication, and role-based access for user and administrator workflows.",
+        "Connected web research and structured report generation through background processing and Pydantic validation."
+      ],
+      "projects": {
+        "rag": [
+          "Built FastAPI endpoints for asynchronous PDF ingestion, task status, document management, and SSE answers; added SHA-256 deduplication.",
+          "Separated API, service, embedding, and storage layers; configured pytest, Qdrant integration tests in GitHub Actions, and Docker Compose."
+        ],
+        "vision": [
+          "Built an npm-packaged TypeScript extension that communicates with a persistent Python inference process over JSON-lines stdio.",
+          "Added request-ID correlation, readiness checks, timeouts, and process-exit handling to reuse inference across tool calls."
+        ],
+        "applypilot": [
+          "Connected a Python/FastAPI resume-processing service to a TypeScript Playwright router using background tasks and subprocesses.",
+          "Built site-specific application handlers and SSE task/log updates to monitor job discovery and browser automation."
+        ]
+      }
+    }
+  },
+  "coding_profiles": {
+    "LeetCode": "https://leetcode.com/u/Abdulrahimchotu7/",
+    "CodeChef": "https://www.codechef.com/users/abdulrahim123"
+  }
+}

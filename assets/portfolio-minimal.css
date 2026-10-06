@@ -1,0 +1,36 @@
+@layer base, theme, layout, interaction;
+@font-face{font-family:Carlito;src:url('fonts/Carlito-Regular.ttf') format('truetype');font-display:swap;font-weight:400}
+@layer base{
+ html{box-sizing:border-box;scroll-padding-top:2rem}*,*::before,*::after{box-sizing:inherit}
+ body{margin:0;font:1.125rem/1.55 Carlito,'Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+ h1,h2,h3,p{margin:0}h1,h2,h3,.wordmark{font-family:'Helvetica Neue',Arial,sans-serif;font-weight:500}
+ a{color:inherit;text-underline-offset:.3em;touch-action:manipulation;-webkit-tap-highlight-color:transparent}p{text-wrap:pretty}h1{text-wrap:balance}
+ a:focus-visible{outline:2px solid var(--ink);outline-offset:5px;border-radius:2px}
+ .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+ ::selection{background:var(--ink);color:var(--bg)}
+}
+@layer theme{
+ :root{color-scheme:light;--bg:#fff;--ink:#151515;--muted:#666;--line:#e3e3e3;--strong-line:#858585;--ease:cubic-bezier(.23,1,.32,1)}
+ [data-theme=dark]{color-scheme:dark;--bg:#101010;--ink:#f3f3f3;--muted:#a3a3a3;--line:#303030;--strong-line:#828282}
+ body{background:var(--bg);color:var(--ink)}.muted{color:var(--muted)}
+}
+@layer layout{
+ .wrap{width:min(960px,calc(100% - 96px));margin-inline:auto}
+ .site-header{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:96px}.wordmark{font-size:1.1rem;font-weight:600;letter-spacing:-.04em;text-decoration:none}.site-header nav{display:flex;gap:24px;font-size:.92rem}.site-header nav a{display:flex;align-items:center;min-height:36px;text-decoration:none}
+ .theme-choice{display:flex;gap:3px}.theme-choice a{display:inline-flex;gap:7px;align-items:center;min-height:34px;padding:5px 9px;text-decoration:none;font-size:.8rem;color:var(--muted);border:1px solid transparent;border-radius:30px}.theme-choice a[aria-current=page]{border-color:var(--strong-line);color:var(--ink)}.swatch{width:9px;height:9px;border-radius:50%;border:1px solid var(--strong-line)}.light-swatch{background:#fff}.dark-swatch{background:#151515}
+ .hero{padding-block:64px 62px}.eyebrow{font-size:.85rem;color:var(--muted)}.hero h1{font-size:clamp(2.7rem,1.3rem + 4.5vw,4.6rem);line-height:1.06;letter-spacing:-.06em;margin-block:22px}.hero h1 span{color:var(--muted)}.hero-description{max-width:51ch;color:var(--muted);font-size:1.2rem}.hero-links{display:flex;align-items:center;gap:30px;margin-top:24px;font-size:.98rem}.availability{display:flex;gap:8px;align-items:center;font-size:.87rem;color:var(--muted)}.availability>span{width:5px;height:5px;background:var(--ink);border-radius:50%}
+ h2{font-size:1.2rem;letter-spacing:-.025em}h3{font-size:1.05rem;letter-spacing:-.025em}.work-section,.about-section{padding-block:30px 22px;border-top:1px solid var(--line)}.work-section>h2,.about-section>h2{margin-bottom:12px}
+ .project-row,.background-row{display:grid;grid-template-columns:1fr 1.7fr;gap:42px;padding-block:24px}.project-row+.project-row,.background-row+.background-row{border-top:1px solid var(--line)}.project-name h3 a{display:inline-flex;align-items:center;gap:7px;min-height:30px;text-decoration:none}.project-name .eyebrow{margin-top:6px}.project-copy>p,.background-row>p,.background-row>div>p{color:var(--muted)}.project-stack{font-size:.83rem;margin-top:10px}.background-row .eyebrow{margin-top:7px;font-size:.8rem}.coding-links{display:flex;gap:20px;font-size:.9rem;margin-top:10px}
+ .contact-line{display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid var(--line);padding-block:28px}.contact-line>a{font-size:1rem;overflow-wrap:anywhere}.site-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-block:24px 30px;font-size:.9rem;color:var(--muted)}.site-footer>div{display:flex;gap:24px}
+ .project-copy .project-purpose{color:var(--ink);font-size:1.15rem}.contribution-label{font-size:.85rem;margin-top:18px}.contribution-list{margin:10px 0 0;padding-left:17px;color:var(--muted);font-size:1.05rem}.contribution-list li{padding-left:4px}.contribution-list li+li{margin-top:10px}.background-row .contribution-list{margin-top:0}.about-detail{margin-top:14px}.skill-line+.skill-line{margin-top:15px}.skill-line>span{display:block;color:var(--ink);font-size:.9rem;margin-bottom:3px}
+ .text-link{display:inline-flex;align-items:center;gap:8px;min-height:30px;text-decoration:none;border-bottom:1px solid var(--strong-line)}.skip{position:fixed;z-index:10;top:12px;left:12px;background:var(--ink);color:var(--bg);padding:10px 18px;transform:translateY(-200%)}.skip:focus{transform:none}
+ @media(max-width:700px){.wrap{width:calc(100% - 40px)}.site-header{flex-wrap:wrap;gap:4px 16px;padding-block:18px;min-height:100px}.site-header nav{gap:18px}.theme-choice{flex-basis:100%;justify-content:center;margin-top:8px}.hero{padding-block:32px 38px}.hero h1{font-size:clamp(2.55rem,1.25rem + 5.5vw,3.8rem)}.hero-description{font-size:1.125rem}.hero-links{gap:20px;flex-wrap:wrap}.project-row,.background-row{grid-template-columns:1fr;gap:10px;padding-block:22px}.project-name .eyebrow{display:none}.project-stack{margin-top:7px}.contact-line{justify-content:start;flex-wrap:wrap;gap:8px 20px;padding-block:24px}.contact-line>a{font-size:.95rem}.site-footer>div{gap:18px}}
+}
+@layer interaction{
+ .arrow{display:inline-block;transition:transform 150ms var(--ease)}
+ @media(hover:hover) and (pointer:fine){.text-link:hover{border-bottom-color:var(--ink)}.project-name a:hover,.site-header nav a:hover{text-decoration:underline;text-underline-offset:.3em}.text-link:hover .arrow,.project-name a:hover .arrow{transform:translate(2px,-2px)}}
+ a:active:not(:focus-visible){opacity:.65}
+ @media(prefers-reduced-motion:reduce){.arrow{transition:none}.text-link:hover .arrow,.project-name a:hover .arrow{transform:none}}
+ @media(pointer:coarse){.theme-choice a,.site-header nav a,.text-link,.project-name h3 a{min-height:44px}}
+}
+@media(forced-colors:active){.theme-choice a[aria-current=page]{border-color:ButtonText}.eyebrow,.muted{color:CanvasText}}
